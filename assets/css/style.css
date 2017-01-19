@@ -1,6 +1,10 @@
+html {
+  -webkit-font-smoothing: antialiased; }
+
 /* A Linux- and Windows-friendly sans-serif font stack: http://prospects.mhurrell.co.uk/post/updating-the-helvetica-font-stack */
 body {
-  font: 16px 'Titillium Web', Freesans, sans-serif; }
+  font: 16px "Titillium Web", Freesans, sans-serif;
+  font-weight: 300; }
 
 /* Using local fonts? Check out Font Squirrel's webfont generator: http://www.fontsquirrel.com/tools/webfont-generator */
 /* We like off-black for text. */
@@ -40,10 +44,8 @@ blockquote {
   padding: 16px;
   background: #eee; }
 
-.flex-inline, .header, .nav, .nav-list {
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center; }
+.flex-inline, .nav, .nav-list, .header-utility {
+  display: flex; }
 
 .body-wrapper {
   background: #e5e5e4; }
@@ -54,27 +56,104 @@ blockquote {
   background: white; }
 
 .header {
-  padding: 3em; }
+  display: flex;
+  justify-content: space-between;
+  min-height: 3.75em; }
 
-.header__logo {
-  font-size: 0; }
+.wrapper-menu-logo {
+  display: flex;
+  margin: 1em 1em 0; }
+
+.header-menu {
+  display: inline-block; }
+
+.header-menu__icon {
+  font-size: 2em !important;
+  color: black; }
+
+.header-logo {
+  display: inline-block;
+  margin: 0.3em 0.8em 0 3.2em; }
+
+.header-logo__icon {
+  display: inline-block;
+  height: 1em; }
 
 .nav {
-  flex: 1 0 auto;
-  justify-content: space-between; }
+  flex: 1 1 auto;
+  justify-content: space-between;
+  padding-bottom: 0.2em; }
 
 .nav__link {
-  font-size: 1.2em;
+  display: inline-block;
+  font-size: 1.1em;
+  letter-spacing: 0.05em;
+  font-weight: 300;
   text-decoration: none;
   color: black;
   border-top: 0.25em solid white;
-  transition: .5s; }
+  padding: 0.8em 0.7em 0.3em;
+  margin: 0 0.3em;
+  transition: 0.5s; }
   .nav__link:hover {
     border-color: #cb380b;
     color: #cb380b;
-    transition: .2s; }
+    transition: 0.2s; }
+
+.nav__link--primary {
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: 1em;
+  padding-top: 1em; }
+
+.header-utility {
+  align-items: center;
+  margin: 0.7em 0.7em 0.5em; }
+
+.header-utility__item {
+  margin: 0 0.7em; }
+
+.header-utility__icon {
+  color: #cb380b; }
+
+.btn {
+  background: #cb380b;
+  display: inline-block;
+  padding: 0.8em 1em;
+  margin: 0 0.3em;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 600;
+  color: white;
+  letter-spacing: 0.05em; }
+  .btn:hover {
+    color: white;
+    background-color: #b1310a; }
+
+.btn--small {
+  font-size: 0.8em; }
 
 /* Media queries
 -------------------------------------------------------------------------------*/
+@media screen and (min-width: 769px) and (max-width: 1028px) {
+  .header--responsive .header__item--md-hidden {
+    display: none; } }
+@media screen and (max-width: 768px) {
+  .header--responsive .header__item--sm-hidden {
+    display: none; }
+  .header--responsive .header-menu__icon {
+    font-size: 1.5em !important; }
+  .header--responsive .header-utility {
+    margin-left: 0; }
+  .header--responsive .header-utility__item {
+    margin-left: 0; }
+  .header--responsive .wrapper-menu-logo {
+    margin-right: 0; }
+  .header--responsive .header-logo {
+    margin-left: 0;
+    margin-right: 0; }
+  .header--responsive .btn {
+    font-size: 0.7em;
+    padding: 1em 0.7em; } }
 
 /*# sourceMappingURL=style.css.map */

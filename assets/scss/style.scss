@@ -1,10 +1,25 @@
 $primary-color: white;
 $accent-color: #cb380b;
+$accent-color--darker: #b1310a;
 $gray-color: #e5e5e4;
 $text-color: black;
+$font-weight: 300;
+$font-weight--bolder: 400;
+$font-weight--bold: 600;
+$font-text: 'Titillium Web', Freesans, sans-serif;
+$font-size: 16px;
+$md: 1028px;
+$sm: 768px;
+
+html {
+  -webkit-font-smoothing: antialiased;
+}
 
 /* A Linux- and Windows-friendly sans-serif font stack: http://prospects.mhurrell.co.uk/post/updating-the-helvetica-font-stack */
-body {font: 16px 'Titillium Web', Freesans, sans-serif;}
+body {
+  font: $font-size 'Titillium Web', Freesans, sans-serif;
+  font-weight: $font-weight;
+}
 
 /* Using local fonts? Check out Font Squirrel's webfont generator: http://www.fontsquirrel.com/tools/webfont-generator */
 
@@ -29,8 +44,6 @@ textarea:-moz-placeholder { color:#a9a9a9; }
 blockquote {padding: 16px; background: #eee;}
 .flex-inline {
   display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
 }
 
 .body-wrapper {
@@ -44,18 +57,40 @@ blockquote {padding: 16px; background: #eee;}
 }
 
 .header {
-  @extend .flex-inline;
-  padding: 3em;
+  display: flex;
+  justify-content: space-between;
+  min-height: 3.75em;
 }
 
-.header__logo {
-  font-size: 0;
+.wrapper-menu-logo {
+  display: flex;
+  margin: 1em 1em 0;
+}
+
+.header-menu {
+  display: inline-block;
+}
+
+.header-menu__icon {
+  font-size: 2em !important;
+  color: $text-color;
+}
+
+.header-logo {
+  display: inline-block;
+  margin: 0.3em 0.8em 0 3.2em;
+}
+
+.header-logo__icon {
+  display: inline-block;
+  height: 1em;
 }
 
 .nav {
   @extend .flex-inline;
-  flex: 1 0 auto;
+  flex: 1 1 auto;
   justify-content: space-between;
+  padding-bottom: 0.2em; 
 }
 
 .nav-list {
@@ -63,18 +98,107 @@ blockquote {padding: 16px; background: #eee;}
 }
 
 .nav__link {
-  font-size: 1.2em;
+  display: inline-block;
+  font-size: 1.1em;
+  letter-spacing: 0.05em;
+  font-weight: $font-weight;
   text-decoration: none;
   color: $text-color;
   border-top: .25em solid $primary-color;
-  transition: .5s;
+  padding: 0.8em 0.7em 0.3em;
+  margin: 0 0.3em;
+  transition: 0.5s;
 
   &:hover {
     border-color: $accent-color;
     color: $accent-color;
-    transition: .2s;
+    transition: 0.2s;
   }
+}
+
+.nav__link--primary {
+  font-weight: $font-weight--bolder;
+  text-transform: uppercase;
+  font-size: 1em;
+  padding-top: 1em;
+}
+
+.header-utility {
+  @extend .flex-inline;
+  align-items: center;
+  margin: 0.7em 0.7em 0.5em;
+}
+
+.header-utility__item {
+  margin: 0 0.7em;
+}
+
+.header-utility__icon {
+  color: $accent-color;
+}
+
+.btn {
+  background: $accent-color;
+  display: inline-block;
+  padding: 0.8em 1em;
+  margin: 0 0.3em;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: $font-weight--bold;
+  color: $primary-color;
+  letter-spacing: 0.05em;
+
+  &:hover {
+    color: $primary-color;
+    background-color: $accent-color--darker;
+  }
+}
+
+.btn--small {
+  font-size: 0.8em;
 }
 
 /* Media queries
 -------------------------------------------------------------------------------*/
+@media screen and (min-width: $sm + 1px) and (max-width: $md) {
+  .header--responsive {
+    .header__item--md-hidden {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: $sm) {
+  .header--responsive {
+
+    .header__item--sm-hidden {
+      display: none;
+    }
+    
+    .header-menu__icon {
+      font-size: 1.5em !important;
+    }
+
+    .header-utility {
+      margin-left: 0;
+    }
+
+    .header-utility__item {
+      margin-left: 0;
+    }
+
+    .wrapper-menu-logo {
+      margin-right: 0;
+    }
+    .header-logo {
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    .btn {
+      font-size: 0.7em;
+      padding: 1em 0.7em;
+    }
+
+  }
+}
